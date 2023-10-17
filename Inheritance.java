@@ -5,7 +5,7 @@
 //Now, assign name, age, phone number, address and salary to an officer and a manager by making an object of both of these classes and print the same.
 //(Exercise to understand inheritance)
 import java.util.Scanner;
-public class Inheritance {
+public class InheritanceFour {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Officer officer =  new Officer();
@@ -13,39 +13,20 @@ public class Inheritance {
 		System.out.println("1. Officer \n2. Manager \nEnter a choice(1/2): ");
 		int choice = scan.nextInt();
 		if  (choice == 1) {
-			System.out.println("Officer");
-			System.out.println("Name: ");
-			officer.Name = scan.next();
-			System.out.println("Age: ");
-			officer.Age = scan.nextInt();
-			System.out.println("Phone Number: ");
-			officer.Phonenumber = scan.nextLong();
-			System.out.println("Address: ");
-			officer.Address = scan.next();
-			System.out.println("Salary: ");
-			officer.Salary = scan.nextInt();
+			officer.input();
 			officer.DetailsTwo();
-			officer.Details();		
+			officer.printSalaryegg();		
 			}
 		else if (choice == 2) {
-			System.out.println("Manager");
-			System.out.println("Name: ");
-			manager.Name = scan.next();
-			System.out.println("Age: ");
-			manager.Age = scan.nextInt();
-			System.out.println("Phone Number: ");
-			manager.Phonenumber = scan.nextLong();
-			System.out.println("Address: ");
-			manager.Address = scan.next();
-			System.out.println("Salary: ");
-			manager.Salary = scan.nextInt();
+			manager.input();
 			manager.DetailsTwo();	
-			manager.Details();
+			manager.printSalaryegg();
 		}
 	}
-
 }
 class Employee {
+	String specialization = new String();
+	String department = new String();
 	Scanner scan = new Scanner(System.in);
 	String Name = new String();
 	String Address = new String();
@@ -56,9 +37,22 @@ class Employee {
 	}
 }
 class Officer extends Employee {
-	String specialization = new String();
-	String department = new String();
-	public void Details() {
+	public void input(){
+			System.out.println("Officer");
+			System.out.println("Name: ");
+			scan.next();
+			Name = scan.nextLine();
+			System.out.println("Age: ");
+			Age = scan.nextInt();
+			System.out.println("Phone Number: ");
+			Phonenumber = scan.nextLong();
+			System.out.println("Address: ");
+			scan.next();
+			Address = scan.nextLine();
+			System.out.println("Salary: ");
+			Salary = scan.nextInt();
+	}
+	public void printSalaryegg() {
 		System.out.println();
 		System.out.println("Officer Details\n");
 		System.out.println("Name: "+Name);
@@ -70,15 +64,30 @@ class Officer extends Employee {
 	}
 	public void DetailsTwo(){
 		System.out.println("Specialization: ");
-		specialization = scan.next();
+		scan.next();
+		specialization = scan.nextLine();
 		System.out.println("Department: ");
-		department = scan.next();
+		scan.next();
+		department = scan.nextLine();
 	}
 }
 class Manager extends Employee {
-	String specialization = new String();
-	String department = new String();
-	public void Details() {
+	public void input(){
+			System.out.println("Manager");
+			System.out.println("Name: ");
+			scan.next();
+			Name = scan.nextLine();
+			System.out.println("Age: ");
+			Age = scan.nextInt();
+			System.out.println("Phone Number: ");
+			Phonenumber = scan.nextLong();
+			System.out.println("Address: ");
+			scan.nextLine();
+			Address = scan.nextLine();
+			System.out.println("Salary: ");
+			Salary = scan.nextInt();
+	}
+	public void printSalaryegg() {
 		System.out.println();
 		System.out.println("Manager Details\n");
 		System.out.println("Name: "+Name);
@@ -90,8 +99,10 @@ class Manager extends Employee {
 	}
 	public void DetailsTwo(){
 		System.out.println("Specialization: ");
-		specialization = scan.next();
+		scan.next();
+		specialization = scan.nextLine();
 		System.out.println("Department: ");
-		department = scan.next();
+		scan.next();
+		department = scan.nextLine();
 	}
 }
