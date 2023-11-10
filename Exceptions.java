@@ -18,7 +18,7 @@ public class Exceptions {
 			catch (ArithmeticException e) {
 				System.out.println("/ by zero");
 			}
-			if (two != 0) {
+			finally {
 				System.out.println("Result: "+result);
 			}
 			System.out.println("End of Operation.");
