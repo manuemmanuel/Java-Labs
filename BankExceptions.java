@@ -64,13 +64,33 @@ public class Bankapp {
                     }
                     break;
                 case 4:
-                
+                    System.out.print("Enter account number and withdrawal amount: ");
+                    int accW = scan.nextInt();
+                    System.out.println("Enter the withdrawal amount: ");
+                    double amtW = scan.nextDouble();
+                    if (amtW > 9999 || amtW < -9999){
+                        System.out.println("Invalid input");
+                    }
+                    boolean founWithdraw = false;
+                    for (int i = 0; i < noOfCustomers; i++) {
+                        if (accW == customer[i].accountNum) {
+                            customer[i].withDrawlAmount(amtW);
+                            founWithdraw = true;
+                            break;
+                            }
+                    }
+                    if (!founWithdraw) {
+                        System.out.println("Account not found!");
+                    } 
+                    else {
+                        System.out.println("Withdrawn successfully.");
+                    }
+                    break;
                 default:
-                System.out.println("Invalid Choice!");
+                System.out.println("Invalid choice! Please enter a valid option.");
+                    break;
             }
-               
-        }while(choice < 5);
-        
+            } while (choice != 5);
     }
 }
 class Customer {
@@ -90,7 +110,8 @@ class Customer {
         accountBalance = scan.nextInt();
     }
     public void depositeAmount(double amtD) {
-
+        accountBalance += amtD;
+    }
     }
     public boolean searchAccountNumber(String accNo) {
         return this.accountNum == Integer.parseInt(accNo);
