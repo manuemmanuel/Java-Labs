@@ -109,6 +109,9 @@ class Customer {
         System.out.println("Enter the Account opening balance: ");
         accountBalance = scan.nextInt();
     }
+    public void withDrawlAmount(double amtW) {
+        accountBalance -= amtW;
+    }
     public void depositeAmount(double amtD) {
         accountBalance += amtD;
     }
