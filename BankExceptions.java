@@ -115,7 +115,6 @@ class Customer {
     public void depositeAmount(double amtD) {
         accountBalance += amtD;
     }
-    }
     public boolean searchAccountNumber(String accNo) {
         return this.accountNum == Integer.parseInt(accNo);
     }
