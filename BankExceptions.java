@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Bankapp {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the Account Number: ");
+        System.out.println("Enter the No. of Customers: ");
         int noOfCustomers = scan.nextInt();
 
         Customer [] customer = new Customer[noOfCustomers];
@@ -28,6 +28,43 @@ public class Bankapp {
                         customer[i].getCustomerDetails();;
                     }
                     break;
+                case 2:
+                    System.out.print("Enter account number to search: ");
+                    int accNo = scan.nextInt();
+                    boolean found = false;
+                    for (int i = 0; i < noOfCustomers; i++) {
+                        if (accNo == customer[i].accountNum){
+                            customer[i].getCustomerDetails();
+                            found = true;
+                            break;
+                        }
+                        }
+                    break;
+                case 3:
+                System.out.print("Enter account number and deposit amount: ");
+                    int accN = scan.nextInt();
+                    System.out.println("Enter the deposit amount: ");
+                    double amtD = scan.nextDouble();
+                    if (amtD < 0){
+                        System.out.println("Invalid Input");
+                    }
+                    boolean founDe = false;
+                    for (int i = 0; i < noOfCustomers; i++) {
+                        if (accN == customer[i].accountNum) {
+                            customer[i].depositeAmount(amtD);
+                            founDe = true;
+                            break;
+                            }
+                    }
+                    if (!founDe) {
+                        System.out.println("Account not found!");
+                    } 
+                    else {
+                        System.out.println("Deposited successfully.");
+                    }
+                    break;
+                case 4:
+                
                 default:
                 System.out.println("Invalid Choice!");
             }
@@ -51,6 +88,12 @@ class Customer {
         customerName = scan.next();
         System.out.println("Enter the Account opening balance: ");
         accountBalance = scan.nextInt();
+    }
+    public void depositeAmount(double amtD) {
+
+    }
+    public boolean searchAccountNumber(String accNo) {
+        return this.accountNum == Integer.parseInt(accNo);
     }
     public void getCustomerDetails(){
         System.out.println("The Customer Details are: ");
