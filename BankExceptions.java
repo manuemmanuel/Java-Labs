@@ -1,54 +1,62 @@
-// create a mini-application for a banking system in Java. In this program, we will add some basic functionalities of a bank account like a deposit of amount, withdrawal of amount, etc.Initially, the program accepts the number of customers (Array of Objects)we need to add and adds the customer and account details accordingly. Further, it displays the series of menus to operate over the accounts.
-//
-//1.Display all account details
-//
-//2.Search by account number
-//
-//3.Deposit the amount
-//
-//4.Withdraw the amount
-//
-//5.Exit 
-//
-//Create Custom Exception and perform the following action:
-//
-//Customers are not allowed to deposit amount <= 0 ( In this case throw InvalidAmountException).
-//
-//Customers are not allowed to withdraw amount <= 0 (throw InvalidAmountException).
-//
-//Customers are also not allowed to withdraw an amount greater than (>)
-//
-//the available amount (throw InsufficientFundsException)
-//	
-//bank-cust-op.docx bank-cust-op.docx
-//6 January 2022, 11:06 AM
 import java.util.Scanner;
-public class BankException {
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("How many number of customers do you want to input?: ");
-		int numCustomers = scan.nextInt();
-		Customer customer = new Customer();
-		customer.setCustomerDetails();
-		
-	}
+public class Bankapp {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the Account Number: ");
+        int noOfCustomers = scan.nextInt();
 
+        Customer [] customer = new Customer[noOfCustomers];
+        for (int i = 0; i < noOfCustomers; i++){
+            customer[i] = new Customer();
+            customer[i].setCustomerDetails();
+        }
+        for (int i = 0; i < noOfCustomers; i++){
+            customer[i].getCustomerDetails();
+        }
+        int choice;
+        do {
+            System.out.println("1. Display Account Details: ");
+            System.out.println("2. Search by Account Number: ");
+            System.out.println("3. Deposit the amount: ");
+            System.out.println("4. Withdraw the amount: ");
+            System.out.println("5. Exit");
+            System.out.println("Enter your choice: ");
+            choice = scan.nextInt();
+            switch (choice){
+                case 1 :
+                    for (int i = 0; i < noOfCustomers; i++) {
+                        customer[i].getCustomerDetails();;
+                    }
+                    break;
+                default:
+                System.out.println("Invalid Choice!");
+            }
+               
+        }while(choice < 5);
+        
+    }
 }
-class  Customer {
-	Scanner scan = new Scanner(System.in);
-	int accountNumber, balance;
-	String accountType,customerName;
-	public void setCustomerDetails() {
-		System.out.println("Enter the Account Number: ");
-		accountNumber = scan.nextInt();
-		System.out.println("Enter the Account Type: ");
-		accountType = scan.next();
-		System.out.println("Enter the customer name: ");
-		customerName = scan.next();
-	}
-	public void getCustomerDetails() {
-		System.out.println("Account Number: "+ accountNumber);
-		System.out.println("Account Type: "+ accountType);
-		System.out.println("Customer Name: "+ customerName);
-	}
+class Customer {
+    int accountNum;
+    String accountType;
+    String customerName;
+    int accountBalance;
+    Scanner scan = new Scanner(System.in);
+    public void setCustomerDetails(){
+        System.out.println("Enter the Account Number: ");
+        accountNum = scan.nextInt();
+        System.out.println("Enter the Account Type: ");
+        accountType = scan.next();
+        System.out.println("Enter the Customer Name: ");
+        customerName = scan.next();
+        System.out.println("Enter the Account opening balance: ");
+        accountBalance = scan.nextInt();
+    }
+    public void getCustomerDetails(){
+        System.out.println("The Customer Details are: ");
+        System.out.println("Account Number: "+accountNum);
+        System.out.println("Account Type: "+accountType);
+        System.out.println("Customer Name: "+customerName);
+        System.out.println("Account Balance: "+accountBalance);
+    }
 }
