@@ -20,7 +20,7 @@ public class BankException {
             System.out.println("3. Deposit the amount");
             System.out.println("4. Withdraw");
             System.out.println("5. Exit");
-            System.out.println("Enter your choice (1/2/3/4/5/): ");
+            System.out.println("Enter your choice: ");
             choice = sc.nextInt();
 
             switch (choice) {
@@ -37,6 +37,7 @@ public class BankException {
                             customer[i].getCustomerDetails();
                         }
                     }
+                    System.out.println("\nPlease enter a valid account number.\n");
                     break;
                 case 3: 
                     System.out.println("Enter the account number: ");
@@ -52,7 +53,7 @@ public class BankException {
                                     customer[i].accountBalance = customer[i].accountBalance + depositAmount;
                                     customer[i].getCustomerDetails();
                                 }
-                            }
+                              }
                         }
 
                     } catch (InvalidAmountException e) {
