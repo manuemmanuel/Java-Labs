@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class BankException {
+public class BankExceptions {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         InvalidAmountException amountException = new InvalidAmountException("Invalid Amount");
