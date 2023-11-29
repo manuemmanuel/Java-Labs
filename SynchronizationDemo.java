@@ -15,6 +15,7 @@ class MythreadOne  extends Thread {
 		this.t = t;
 	}
 	public void run() {
+		System.out.println(Thread.currentThread().getName());
 		t.print(5);
 	}
 }
@@ -31,6 +32,7 @@ class MythreadTwo extends Thread {
 		this.tm = tm;
 	}
 	public void run() {
+		System.out.println(Thread.currentThread().getName());
 		tm.print(10);
 	}
 }
