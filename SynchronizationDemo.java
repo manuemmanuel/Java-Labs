@@ -19,12 +19,10 @@ class MythreadOne  extends Thread {
 	}
 }
 class MultiplicationTable {
-	void print(int number) {
-		synchronized(this) {
+	synchronized void print(int number) {
 				for (int i = 1; i <= 10; i++) {
 				System.out.println(i+"x"+number+"="+i*number);
 			}
-		}
 	}
 }
 class MythreadTwo extends Thread {
