@@ -15,7 +15,8 @@ class MythreadOne  extends Thread {
 		this.t = t;
 	}
 	public void run() {
-		System.out.println(Thread.currentThread().getName());
+		System.out.println("Name: "+Thread.currentThread().getName());
+		System.out.println("Priority: "+Thread.currentThread().getPriority());
 		t.print(5);
 	}
 }
@@ -32,7 +33,8 @@ class MythreadTwo extends Thread {
 		this.tm = tm;
 	}
 	public void run() {
-		System.out.println(Thread.currentThread().getName());
+		System.out.println("Name: "+Thread.currentThread().getName());
+		System.out.println("Priority: "+Thread.currentThread().getPriority());
 		tm.print(10);
 	}
 }
