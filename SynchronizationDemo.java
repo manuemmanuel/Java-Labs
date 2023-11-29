@@ -3,10 +3,11 @@ public class SynchronizationDemo {
 	public static void main(String[] args) {
 		MultiplicationTable mt = new MultiplicationTable();
 		MythreadOne t = new MythreadOne(mt);
+		t.setPriority(2);
 		t.start();
 		MythreadTwo m = new MythreadTwo(mt);
+		m.setPriority(3);
 		m.start();
-
 	}
 }
 class MythreadOne  extends Thread {
