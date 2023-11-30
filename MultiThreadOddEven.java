@@ -20,7 +20,7 @@ class NumberManager {
 	public synchronized void printEvenNumbers() throws InterruptedException {
 		while(!numberGenerated || generatedNumber % 2 != 0) {
 			wait();
-			for (int i = 0; i <= generatedNumber; i ++) {
+			for (int i = 2; i <= generatedNumber; i ++) {
 				System.out.print(i+" ");
 			}
 			numberGenerated = false;
@@ -29,7 +29,7 @@ class NumberManager {
 	public synchronized void printOddNumbers() throws InterruptedException {
 		while(!numberGenerated || generatedNumber % 2 == 0) {
 			wait();
-			for (int i = 0; i <= generatedNumber; i ++) {
+			for (int i = 1; i <= generatedNumber; i ++) {
 				System.out.print(i+" ");
 			}
 			numberGenerated = false;
