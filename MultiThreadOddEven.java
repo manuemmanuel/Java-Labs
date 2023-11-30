@@ -12,7 +12,7 @@ class NumberManager {
 	private int generatedNumber;
 	private boolean numberGenerator = false;
 	public synchronized void generateNumber() {
-		
+		generatedNumber = new Random().nextInt(99)+2;
 	}
 }
 class ThreadOne extends Thread {
