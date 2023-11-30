@@ -1,4 +1,3 @@
-
 /*Write a java program that creates three threads. First thread generates a random positive number (>1) every second. If the number is even, */
 package javaclass;
 import java.util.Random;
