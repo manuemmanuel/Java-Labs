@@ -50,7 +50,7 @@ class NumberGenerator extends Thread {
 		}
 	}
 }
-class ThreadTwo extends Thread {
+class EvenPrinterThread extends Thread {
 	
 }
 class ThreadThree extends Thread {
