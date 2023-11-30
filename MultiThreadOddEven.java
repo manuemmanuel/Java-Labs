@@ -1,4 +1,4 @@
-/*Write a java program that creates three threads. First thread generates a random positive number (>1) every second. If the number is even, the second thread */
+/*Write a java program that creates three threads. First thread generates a random positive number (>1) every second. If the number is even, the second thread prints all even numbers between 1 and the generated number. If the number is odd, the third thread will print all odd numbers between 1 and the generated number.*/
 package javaclass;
 import java.util.Random;
 public class MultiThreadOddEven {
@@ -36,8 +36,14 @@ class NumberManager {
 		}
 	}
 }
-class ThreadOne extends Thread {
-	
+class NumberGenerator extends Thread {
+	NumberManager numberManager;
+	public NumberGenerator(NumberManager numbermanager) {
+		this.numberManager = numberManager;
+	}
+	public void run() {
+		numberManager.generateNumber();
+	}
 }
 class ThreadTwo extends Thread {
 	
