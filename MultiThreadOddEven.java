@@ -51,7 +51,13 @@ class NumberGenerator extends Thread {
 	}
 }
 class EvenPrinterThread extends Thread {
-	
+	NumberManager numberManager;
+	public EvenPrinterThread(NumberManager numberManager) {
+		this.numberManager = numberManager;
+	}
+	public void run() {
+		
+	}
 }
 class ThreadThree extends Thread {
 	
