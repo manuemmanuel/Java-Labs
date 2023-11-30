@@ -10,9 +10,11 @@ public class MultiThreadOddEven {
 }
 class NumberManager {
 	private int generatedNumber;
-	private boolean numberGenerator = false;
+	private boolean numberGenerated = false;
 	public synchronized void generateNumber() {
 		generatedNumber = new Random().nextInt(99)+2;
+		System.out.println("Generated Random Number: "+generatedNumber);
+		numberGenerated = true;
 	}
 }
 class ThreadOne extends Thread {
