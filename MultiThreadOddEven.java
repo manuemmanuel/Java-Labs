@@ -3,7 +3,8 @@ package javaclass;
 import java.util.Random;
 public class MultiThreadOddEven {
 	public static void main(String[] args) {
-		
+		NumberManager nm = new NumberManager();
+		nm.generateNumber();
 
 	}
 
@@ -15,6 +16,11 @@ class NumberManager {
 		generatedNumber = new Random().nextInt(99)+2;
 		System.out.println("Generated Random Number: "+generatedNumber);
 		numberGenerated = true;
+	}
+	public synchronized void printEvenNumbers() throws InterruptedException {
+		while(!numberGenerated || generatedNumber % 2 == 0) {
+			wait();
+		}
 	}
 }
 class ThreadOne extends Thread {
