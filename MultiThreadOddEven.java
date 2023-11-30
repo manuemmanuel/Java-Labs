@@ -26,15 +26,15 @@ class NumberManager {
 			numberGenerated = false;
 		}
 	}
-	public synchronized void printOddNumbers() throws InterruptedException {
-		while(!numberGenerated || generatedNumber % 2 == 0) {
-			wait();
-			for (int i = 1; i <= generatedNumber; i ++) {
-				System.out.print(i+" ");
-			}
-			numberGenerated = false;
-		}
-	}
+//	public synchronized void printOddNumbers() throws InterruptedException {
+//		while(!numberGenerated || generatedNumber % 2 == 0) {
+//			wait();
+//			for (int i = 1; i <= generatedNumber; i ++) {
+//				System.out.print(i+" ");
+//			}
+//			numberGenerated = false;
+//		}
+//	}
 }
 class NumberGenerator extends Thread {
 	NumberManager numberManager;
@@ -56,7 +56,13 @@ class EvenPrinterThread extends Thread {
 		this.numberManager = numberManager;
 	}
 	public void run() {
-		
+		while(true) {
+			try {
+				numberManager.printEvenNumbers();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }
 class ThreadThree extends Thread {
