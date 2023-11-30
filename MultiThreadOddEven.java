@@ -43,6 +43,11 @@ class NumberGenerator extends Thread {
 	}
 	public void run() {
 		numberManager.generateNumber();
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
 class ThreadTwo extends Thread {
