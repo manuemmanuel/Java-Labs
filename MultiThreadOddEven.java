@@ -4,7 +4,11 @@ import java.util.Random;
 public class MultiThreadOddEven {
 	public static void main(String[] args) {
 		NumberManager nm = new NumberManager();
-		nm.generateNumber();
+		NumberGenerator ng = new NumberGenerator(nm);
+		EvenPrinterThread ept = new EvenPrinterThread(nm);
+		OddPrinterThread odp = new OddPrinterThread(nm);
+		ept.start();
+		ng.start();
 
 	}
 
@@ -16,6 +20,7 @@ class NumberManager {
 		generatedNumber = new Random().nextInt(99)+2;
 		System.out.println("Generated Random Number: "+generatedNumber);
 		numberGenerated = true;
+		notifyAll();
 	}
 	public synchronized void printEvenNumbers() throws InterruptedException {
 		while(!numberGenerated || generatedNumber % 2 != 0) {
@@ -26,27 +31,29 @@ class NumberManager {
 			numberGenerated = false;
 		}
 	}
-//	public synchronized void printOddNumbers() throws InterruptedException {
-//		while(!numberGenerated || generatedNumber % 2 == 0) {
-//			wait();
-//			for (int i = 1; i <= generatedNumber; i ++) {
-//				System.out.print(i+" ");
-//			}
-//			numberGenerated = false;
-//		}
-//	}
+	public synchronized void printOddNumbers() throws InterruptedException {
+		while(!numberGenerated || generatedNumber % 2 == 0) {
+			wait();
+			for (int i = 1; i <= generatedNumber; i ++) {
+				System.out.print(i+" ");
+			}
+			numberGenerated = false;
+		}
+	}
 }
 class NumberGenerator extends Thread {
 	NumberManager numberManager;
-	public NumberGenerator(NumberManager numbermanager) {
+	public NumberGenerator(NumberManager numberManager) {
 		this.numberManager = numberManager;
 	}
 	public void run() {
-		numberManager.generateNumber();
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		while(true) {
+			try {
+				numberManager.generateNumber();
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
@@ -65,6 +72,18 @@ class EvenPrinterThread extends Thread {
 		}
 	}
 }
-class ThreadThree extends Thread {
-	
+class OddPrinterThread extends Thread {
+	NumberManager numberManager;
+	public OddPrinterThread(NumberManager numberManager) {
+		this.numberManager = numberManager;
+	}
+	public void run() {
+		while(true) {
+			try {
+				numberManager.printOddNumbers();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
