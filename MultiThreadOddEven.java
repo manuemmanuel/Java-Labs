@@ -9,7 +9,8 @@ public class MultiThreadOddEven {
 
 }
 class NumberManager {
-	int n;
+	private int generatedNumber;
+	private boolean numberGenerator = false;
 }
 class ThreadOne extends Thread {
 	
