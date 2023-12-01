@@ -1,6 +1,7 @@
 public class Threads {
     public static void main(String[] args){
         ThreadOne to = new ThreadOne();
+        to.start();
     }
 }
 class ThreadOne extends Thread {
