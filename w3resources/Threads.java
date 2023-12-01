@@ -1,8 +1,8 @@
 public class Threads {
-    public static void main(){
+    public static void main(String[] args){
         
     }
 }
 class ThreadOne extends Thread {
-    
+
 }
