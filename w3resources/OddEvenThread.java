@@ -13,3 +13,6 @@ class Odd extends Thread {
         }
     }
 }
+class Even extends Thread {
+    
+}
