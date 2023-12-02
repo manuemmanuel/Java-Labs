@@ -24,7 +24,7 @@ class ThreadOne implements Runnable {
 class ThreadTwo extends ThreadOne implements Runnable {
 	public void run() {
 		int result = generatedNumber*generatedNumber;
-		
+		System.out.println("The square of the generated number is: "+result);
 	}
 }
 class ThreadThree implements Runnable {
