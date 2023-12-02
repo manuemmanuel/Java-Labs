@@ -1,12 +1,17 @@
-package javaclass;
+import java.util.Scanner;
 public class SynchronizationDemo {
 	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
 		MultiplicationTable mt = new MultiplicationTable();
+		System.out.println("Enter the priority for the first thread: ");
+		int n = scan.nextInt();
+		System.out.println("Enter the priority for the second thread: ");
+		int num = scan.nextInt();
 		MythreadOne t = new MythreadOne(mt);
-		t.setPriority(2);
+		t.setPriority(n);
 		t.start();
 		MythreadTwo m = new MythreadTwo(mt);
-		m.setPriority(3);
+		m.setPriority(num);
 		m.start();
 	}
 }
