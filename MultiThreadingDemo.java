@@ -1,34 +1,50 @@
-//Write a Java program that implements a multi-threaded program which has three threads. First
-//
-//thread generates a random integer every 1 second. If the value is even, second thread
-//
-//computes the square of the number and prints. If the value is odd the third thread will print the
-//
-//value of cube of the number
 import java.util.Random;
 public class MultiThreadingDemo {
 	public static void main(String[] args) {
-		ThreadOne one = new ThreadOne();
-		Thread object = new Thread(one);
-		object.start();
+		NumberThread ng = new NumberThread();
+		ng.start();
+	}
+}
+class Square extends Thread {
+	int number;
+	Square(int n){
+		number = n;
+	}
+	public void run() {
+		int square = number * number;
+		System.out.println("The Square of the generated number is: "+ square);
+	}
+}
+class Cube extends Thread {
+	int number;
+	Cube(int n) {
+		number = n;
+		}
+	public void run(){
+		int cube = number * number * number;
+		System.out.println("The Cube of the generated number is:" + cube );
+		}
+	}
+class NumberThread extends Thread {
+	public void run() {
+		Random random = new Random();
+		for(int i = 0; i < 10; i++) {
+			int generatedNumber = random.nextInt(10);
+			System.out.println("Random generated number: " + generatedNumber);
+			Square sq = new Square(generatedNumber);
+			Cube c = new Cube(generatedNumber);
+			if (generatedNumber % 2 == 0) {
+				sq.start();
+			}
+			else {
+				c.start();
+			}
+			try {
+				Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+					}
+			}
+		}
+	}
 
-	}
-
-}
-class ThreadOne implements Runnable {
-	int generatedNumber = new Random().nextInt(99)+2;
-	public void run() {
-		System.out.println("Generated Random Number: "+generatedNumber);
-	}
-}
-class ThreadTwo extends ThreadOne implements Runnable {
-	public void run() {
-		int result = generatedNumber*generatedNumber;
-		System.out.println("The square of the generated number is: "+result);
-	}
-}
-class ThreadThree implements Runnable {
-	public void run() {
-		
-	}
-}
