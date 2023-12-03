@@ -8,4 +8,5 @@ public class TriangleAreaCalculator {
         System.out.print("Input Side-1: ");
         double side1 = scanner.nextDouble();
 
+        System.out.print("Input Side-2: ");
        
