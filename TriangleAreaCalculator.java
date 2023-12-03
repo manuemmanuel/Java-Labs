@@ -12,6 +12,4 @@ public class TriangleAreaCalculator {
         double side2 = scanner.nextDouble();
 
         System.out.print("Input Side-3: ");
- 
-    }
-}
+       
