@@ -16,6 +16,10 @@ public class TriangleAreaCalculator {
 
         double area = calculateTriangleArea(side1, side2, side3);
 
-    
+        System.out.println("The area of the triangle is " + area);
+    }
+
+ 
+        return area;
     }
 }
