@@ -12,7 +12,6 @@ public class sumOfElementsInAString {
 		}
 		System.out.println("The sum of numbers in String: "+sum);
 		sc.close();
-		
 		}
 	}
 
