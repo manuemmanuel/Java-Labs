@@ -11,7 +11,7 @@ public class sumOfElementsInAString {
 			sum = sum+data;
 		}
 		System.out.println("The sum of numbers in String: "+sum);
-		sc.close();
+		scan.close();
 		}
 	}
 
