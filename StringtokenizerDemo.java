@@ -1,7 +1,6 @@
 import java.util.StringTokenizer;
 import java.util.Scanner;
 public class sumOfElementsInAString {
-	
 	public static void main(String [] args) {
 		int sum = 0;
 		Scanner scan = new Scanner(System.in);
