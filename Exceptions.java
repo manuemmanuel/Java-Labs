@@ -14,15 +14,17 @@ public class Exceptions {
 			int two = scan.nextInt();
 			try {
 				result = one / two;
+				if (two != 0){
+					System.out.println("Result: "+result);
+				}
 			}
 			catch (ArithmeticException e) {
 				System.out.println("/ by zero");
 			}
 			finally {
-				System.out.println("Result: "+result);
+				System.out.println("End of Operation.");
+				System.out.println("Do you want to continue (y/n): ");
 			}
-			System.out.println("End of Operation.");
-			System.out.println("Do you want to continue (y/n): ");
 			String choice = scan.next();
 			char [] answer = choice.toCharArray();
 			if (answer[0] == 'n') {
