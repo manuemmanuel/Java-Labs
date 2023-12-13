@@ -42,10 +42,10 @@ public class GUICalc extends JFrame implements ActionListener {
         subtractButton.addActionListener(this);
         buttonPanel.add(numberButtons[0]);
        
-        multiplyButton = new JButton("*");
+        multiplyButton = new JButton("x");
         buttonPanel.add(multiplyButton);
         multiplyButton.addActionListener(this);
-        divideButton = new JButton("/");
+        divideButton = new JButton("%");
         buttonPanel.add(divideButton);
         divideButton.addActionListener(this);
         equalsButton = new JButton("=");
@@ -53,7 +53,7 @@ public class GUICalc extends JFrame implements ActionListener {
         equalsButton.addActionListener(this);
         clearButton.addActionListener(this);
 
-        resultField = new JTextField(10);
+        resultField = new JTextField(20);
         resultField.setPreferredSize(new Dimension(100, 50));
 
         add(buttonPanel, BorderLayout.CENTER);
@@ -85,11 +85,11 @@ public class GUICalc extends JFrame implements ActionListener {
                 isOperator = true;
             }
             if (clickedButton == multiplyButton) {
-                operator = '*';
+                operator = 'x';
                 isOperator = true;
             }
             if (clickedButton == divideButton) {
-                operator = '/';
+                operator = '%';
                 isOperator = true;
             }
 
@@ -116,12 +116,12 @@ public class GUICalc extends JFrame implements ActionListener {
             case '-':
                 operand1 -= operand2;
                 break;
-            case '*':
+            case 'x':
                 operand1 *= operand2;
                 break;
-            case '/':
+            case '%':
                 if (operand2 != 0) {
-                    operand1 /= operand2;
+                    operand1 %= operand2;
                 } else {
                     resultField.setText("Error: Divide by zero");
                 }
