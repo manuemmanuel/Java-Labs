@@ -1,10 +1,7 @@
-/*Java program that works as a simple calculator. Arrange Buttons for digits and
-the + - * % operations properly. Add a text field to display the result. Handle any possible
-exceptions like divide by zero. Use Java Swing.*/
-
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class GUICalc extends JFrame implements ActionListener {
     JButton numberButtons[] = new JButton[10];
@@ -14,47 +11,64 @@ public class GUICalc extends JFrame implements ActionListener {
     JTextField resultField;
 
     GUICalc() {
-        JFrame frame = new JFrame("GUI CALCULATOR");
-        setLayout(new BorderLayout());
+    	setTitle("Java Calculator App");
+        JFrame frame = new JFrame("CALCULATOR");
+        setLayout(new BorderLayout(5 , 5));
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4, 5));
+        buttonPanel.setLayout(new GridLayout(4, 4, 10, 10));
+        buttonPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        
 
-        for (int i = 9; i >= 0; i--) {
+        for (int i = 7; i < 10; i++) {
             numberButtons[i] = new JButton(String.valueOf(i));
+            buttonPanel.add(numberButtons[i]);
             numberButtons[i].addActionListener(this);
         }
-        buttonPanel.add(numberButtons[7]);
-        buttonPanel.add(numberButtons[8]);
-        buttonPanel.add(numberButtons[9]);
+        
         clearButton = new JButton("C");
         buttonPanel.add(clearButton);
-        buttonPanel.add(numberButtons[4]);
-        buttonPanel.add(numberButtons[5]);
-        buttonPanel.add(numberButtons[6]);
+        clearButton.addActionListener(this);
+        
+        for (int i = 4; i < 7; i++) {
+            numberButtons[i] = new JButton(String.valueOf(i));
+            buttonPanel.add(numberButtons[i]);
+            numberButtons[i].addActionListener(this);
+        }
+        
         addButton = new JButton("+");
         buttonPanel.add(addButton);
         addButton.addActionListener(this);
-        buttonPanel.add(numberButtons[3]);
-        buttonPanel.add(numberButtons[2]);
-        buttonPanel.add(numberButtons[1]);
+        
+        for (int i = 1; i < 4; i++) {
+            numberButtons[i] = new JButton(String.valueOf(i));
+            buttonPanel.add(numberButtons[i]);
+            numberButtons[i].addActionListener(this);
+        }
+        
         subtractButton = new JButton("-");
         buttonPanel.add(subtractButton);
         subtractButton.addActionListener(this);
-        buttonPanel.add(numberButtons[0]);
-       
+
+        for (int i = 0; i < 1; i++) {
+            numberButtons[i] = new JButton(String.valueOf(i));
+            buttonPanel.add(numberButtons[i]);
+            numberButtons[i].addActionListener(this);
+        }
+        
+        
         multiplyButton = new JButton("x");
         buttonPanel.add(multiplyButton);
         multiplyButton.addActionListener(this);
-        divideButton = new JButton("%");
+        divideButton = new JButton("/");
         buttonPanel.add(divideButton);
         divideButton.addActionListener(this);
         equalsButton = new JButton("=");
         buttonPanel.add(equalsButton);
         equalsButton.addActionListener(this);
-        clearButton.addActionListener(this);
+        
 
-        resultField = new JTextField(20);
-        resultField.setPreferredSize(new Dimension(100, 50));
+        resultField = new JTextField(10);
+        resultField.setPreferredSize(new Dimension(200, 50));
 
         add(buttonPanel, BorderLayout.CENTER);
         add(resultField, BorderLayout.NORTH);
@@ -85,11 +99,11 @@ public class GUICalc extends JFrame implements ActionListener {
                 isOperator = true;
             }
             if (clickedButton == multiplyButton) {
-                operator = 'x';
+                operator = '*';
                 isOperator = true;
             }
             if (clickedButton == divideButton) {
-                operator = '%';
+                operator = '/';
                 isOperator = true;
             }
 
@@ -116,12 +130,12 @@ public class GUICalc extends JFrame implements ActionListener {
             case '-':
                 operand1 -= operand2;
                 break;
-            case 'x':
+            case '*':
                 operand1 *= operand2;
                 break;
-            case '%':
+            case '/':
                 if (operand2 != 0) {
-                    operand1 %= operand2;
+                    operand1 /= operand2;
                 } else {
                     resultField.setText("Error: Divide by zero");
                 }
