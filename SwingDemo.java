@@ -9,7 +9,9 @@ class SwingDemo {
   }
   public static void main(){
     SwingUtilities.invokeLater(new Runnable {
-
+      public void run(){
+        new SwingDemo();
+      }
     })
   }
 }
