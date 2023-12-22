@@ -8,6 +8,8 @@ class SwingDemo {
     jframe.setVisible(true);
   }
   public static void main(){
+    SwingUtilities.invokeLater(new Runnable {
 
+    })
   }
 }
