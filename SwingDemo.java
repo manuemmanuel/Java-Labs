@@ -7,4 +7,7 @@ class SwingDemo {
     jframe.add(jlabel);
     jframe.setVisible(true);
   }
+  public static void main(){
+
+  }
 }
